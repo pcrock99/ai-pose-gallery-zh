@@ -88,7 +88,14 @@ export interface WorkflowParameterOverrides {
 
 export interface ComfyUiParams {
   parameterOverrides?: WorkflowParameterOverrides
-  workflowPreset: 'qwen2509_3img' | 'qwen2509_2img' | 'qwen21_3img' | 'qwen21_2img' | 'custom'
+  workflowPreset:
+    | 'flux3_klein'
+    | 'qwen2509_depth'
+    | 'qwen2509_3img'
+    | 'qwen2509_2img'
+    | 'qwen21_3img'
+    | 'qwen21_2img'
+    | 'custom'
   workflowJson: string
   promptNodeId: string
   portraitNodeId: string
@@ -131,6 +138,20 @@ export interface DoubaoParams {
   sequentialImageGeneration: 'disabled' | 'auto'
   watermark: boolean
   responseFormat: 'b64_json' | 'url'
+}
+
+/** 地端 ComfyUI 工作流預設參數（供 comfyui.ts 模板輔助函式使用） */
+export interface ComfyuiParams {
+  unet: string
+  clip: string
+  vae: string
+  /** 加速 LoRA；留空代表不使用（請自行調整步數與 cfg） */
+  lora: string
+  width: number
+  height: number
+  steps: number
+  cfg: number
+  negativePrompt: string
 }
 
 export interface ApiConfig {
